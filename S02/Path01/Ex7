@@ -1,0 +1,6 @@
+<?php
+$int = 5;
+$str = "5";
+echo "Equal: " . ($int == $str ? "True" : "False") . ", ";
+echo "Identical: " . ($int === $str ? "True" : "False");
+?>
