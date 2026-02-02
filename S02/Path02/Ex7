@@ -1,0 +1,8 @@
+<?php
+$original = [1, 2, 3];
+$reversed = [];
+for ($i = count($original) - 1; $i >= 0; $i--) {
+    $reversed[] = $original[$i];
+}
+print_r($reversed);
+?>
