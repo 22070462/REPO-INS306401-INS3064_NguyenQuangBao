@@ -1,0 +1,14 @@
+<?php
+$students = [
+    ["name" => "A", "grade" => 90],
+    ["name" => "B", "grade" => 85],
+    ["name" => "C", "grade" => 95]
+];  // Example data; adjust as needed
+
+echo "<table border='1'>";
+echo "<tr><th>Name</th><th>Grade</th></tr>";
+foreach ($students as $student) {
+    echo "<tr><td>{$student['name']}</td><td>{$student['grade']}</td></tr>";
+}
+echo "</table>";
+?>
