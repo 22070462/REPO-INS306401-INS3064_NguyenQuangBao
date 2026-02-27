@@ -1,0 +1,12 @@
+[ ] Folder Structure: Does your zip match the required structure?
+[ ] Naming: Are all files in snake_case ? (No spaces!)
+[ ] Core Exercises: Have you completed all 8 core exercises?
+[ ] Advanced Exercises: Have you completed all 6 advanced exercises?
+[ ] Mini Project: Does the Mini Project include Registration, Login, AND Profile Edit?
+[ ] Testing: Did you run the "Acceptance Tests" manually?
+[ ] Validation: Did you try submitting empty forms to ensure errors appear?
+[ ] XSS: Did you try submitting HTML tags to ensure they don't break the layout?
+[ ] Debug Mode: Is display_errors on in your local environment (so you know your code works)?
+[ ] Cleanup: Did you remove temporary test files or backups?
+[ ] Format: Is the file extension .zip (not .rar or .7z)?
+[ ] Labeling: Is the zip file named homework_session_03_22070462.zip ?
