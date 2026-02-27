@@ -1,1 +1,17 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="submit.php" method="post">
+        <label>Full Name: <input type="text" name="name" required></label><br>
+        <label>Email: <input type="email" name="email" required></label><br>
+        <label>Phone Number: <input type="tel" name="phone"></label><br>
+        <label>Message: <textarea name="message" required></textarea></label><br>
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>
