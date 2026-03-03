@@ -1,33 +1,99 @@
--- =============================================
--- A1COREUrgency - Student Ops: Build the Student Database
--- Script: a1_student_ops.sql
--- =============================================
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 03, 2026 at 02:41 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
--- 1. Tạo database với collation đúng yêu cầu
-CREATE DATABASE IF NOT EXISTS `student_management_db`
-CHARACTER SET utf8mb4
-COLLATE utf8mb4_unicode_ci;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
--- 2. Chọn database để tạo bảng
-USE `student_management_db`;
 
--- 3. Tạo bảng classes
-CREATE TABLE IF NOT EXISTS `classes` (
-    `id`          INT AUTO_INCREMENT PRIMARY KEY,
-    `class_name`  VARCHAR(255) NOT NULL,
-    `department`  VARCHAR(255)
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `student_management_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `classes`
+--
+
+CREATE TABLE `classes` (
+  `id` int(11) NOT NULL,
+  `class_name` varchar(255) NOT NULL,
+  `department` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- 4. Tạo bảng students (có FK đúng, email UNIQUE + NOT NULL)
-CREATE TABLE IF NOT EXISTS `students` (
-    `id`           INT AUTO_INCREMENT PRIMARY KEY,
-    `student_code` VARCHAR(50) UNIQUE,
-    `full_name`    VARCHAR(255),
-    `email`        VARCHAR(255) UNIQUE NOT NULL,
-    `age`          INT,
-    `class_id`     INT,
-    FOREIGN KEY (`class_id`) REFERENCES `classes`(`id`)
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `id` int(11) NOT NULL,
+  `student_code` varchar(50) DEFAULT NULL,
+  `full_name` varchar(255) DEFAULT NULL,
+  `email` varchar(255) NOT NULL,
+  `age` int(11) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Kiểm tra nhanh (không bắt buộc)
-SHOW TABLES;
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `classes`
+--
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `student_code` (`student_code`),
+  ADD KEY `class_id` (`class_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `classes`
+--
+ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `students`
+--
+ALTER TABLE `students`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `students`
+--
+ALTER TABLE `students`
+  ADD CONSTRAINT `students_ibfk_1` FOREIGN KEY (`class_id`) REFERENCES `classes` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
